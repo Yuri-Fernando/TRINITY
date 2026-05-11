@@ -1,0 +1,97 @@
+# Regulatory Uncertainty LLM Index - Configuration
+
+# Data Pipeline
+pipeline:
+  chunk_size: 512
+  chunk_overlap: 100
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  embedding_batch_size: 32
+  llm_model: "gpt-3.5-turbo"
+  llm_temperature: 0.3
+
+# Index Aggregation
+index:
+  smoothing_window: 7  # days
+  decay_factor: 0.7
+  ema_alpha: 0.3
+  volatility_window: 30  # days
+
+# Data Sources
+sources:
+  fed_statements:
+    enabled: true
+    update_frequency: "daily"
+    limit: 20
+
+  sec_filings:
+    enabled: true
+    update_frequency: "daily"
+    doc_types: ["10-K", "10-Q", "8-K"]
+
+  news:
+    enabled: true
+    update_frequency: "hourly"
+    feeds:
+      - "reuters"
+      - "bloomberg"
+      - "wsj"
+
+# Database
+database:
+  type: "postgresql"
+  host: "localhost"
+  port: 5432
+  database: "regulatory_uncertainty"
+  username: "${DATABASE_USER}"
+  password: "${DATABASE_PASSWORD}"
+  pool_size: 5
+
+# Vector Store
+vector_store:
+  type: "faiss"  # or "chromadb"
+  path: "./data/embeddings/"
+  dimension: 384
+  index_type: "IVFFlat"
+
+# API Server
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  cors_origins: ["*"]
+
+# Dashboard
+dashboard:
+  streamlit:
+    theme: "light"
+    port: 8501
+
+# Logging
+logging:
+  level: "INFO"
+  log_dir: "./logs/"
+  log_rotation: "500 MB"
+
+# Validation
+validation:
+  event_comparison:
+    enabled: true
+    benchmark_indices:
+      - "vix"
+      - "ted_spread"
+      - "fed_funds_futures"
+
+  temporal_consistency:
+    enabled: true
+    min_autocorr: 0.6
+
+# Scaling
+scaling:
+  parallel_ingestion: true
+  batch_embedding: true
+  distributed_llm: false
+  cloud_backend: false  # Set to true for AWS Lambda
+
+# Environment
+environment: "development"  # or "production"
+debug: false
