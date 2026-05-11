@@ -84,28 +84,31 @@ Data Sources (Regulatory Docs, News, Transcripts)
 | **Container** | Docker |
 | **Orchestration** | AWS Lambda / Airflow |
 
-## Features de Impressão
+## Capacidades Técnicas Implementadas
 
-### Pipeline
-- ✓ Ingestão automática e escalável
-- ✓ Chunking semântico com preservação de contexto
-- ✓ Embeddings vetoriais de alta dimensão
-- ✓ Classificação contextual de incerteza
-- ✓ Scoring temporal e agregação
+O sistema implementa um pipeline de research engineering com as seguintes capacidades:
 
-### IA
-- ✓ Semantic retrieval com similaridade vetorial
-- ✓ LLM classification zero-shot/few-shot
-- ✓ Topic extraction automática
-- ✓ Regulatory signal detection
-- ✓ Semantic similarity analysis
+**Ingestion & Preprocessing**
+- Ingestion automática e escalável de múltiplas fontes regulatórias
+- Semantic chunking com preservação de contexto via overlap
+- Normalização robusta de documentos com múltiplos formatos
 
-### Quantitativo
-- ✓ Probabilistic scoring com calibração
-- ✓ Uncertainty weighting por relevância
-- ✓ Drift detection (CUSUM, changepoint analysis)
-- ✓ Temporal volatility analysis
-- ✓ Index aggregation com pesos Bayesianos
+**Representação & Busca**
+- Embeddings vetoriais de alta dimensão usando Sentence Transformers
+- Semantic retrieval com similaridade cosine e indexação FAISS
+- Support para buscas de contexto regulatório
+
+**Classificação de Incerteza**
+- LLM-based classification zero-shot usando prompts otimizados
+- Extração automática de sinais, keywords e domínios regulatórios
+- Confiança calibrada para cada classificação
+
+**Agregação & Análise Temporal**
+- Scoring probabilístico com pesos por recência e confiança
+- Exponential moving average (EMA) para suavização
+- Volatility detection usando rolling standard deviation
+- Sub-índices por domínio regulatório (credit, market, operational)
+- Drift detection e anomaly identification via statistical analysis
 
 ## Validação & Benchmarks
 
