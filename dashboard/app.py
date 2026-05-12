@@ -55,21 +55,36 @@ st.markdown("Real-time monitoring of regulatory uncertainty signals")
 @st.cache_data
 def load_index_data():
     """Load index timeseries data."""
-    index_path = Path('../data/processed/index_pipeline.csv')
-    if index_path.exists():
-        return pd.read_csv(index_path)
-    else:
-        st.warning("No index data found. Run the pipeline first.")
-        return None
+    # Try multiple paths
+    paths = [
+        'data/processed/index_pipeline.csv',
+        '../data/processed/index_pipeline.csv',
+        './data/processed/index_pipeline.csv'
+    ]
+
+    for path in paths:
+        p = Path(path)
+        if p.exists():
+            return pd.read_csv(p)
+
+    st.warning("No index data found. Run the pipeline first.")
+    return None
 
 @st.cache_data
 def load_scores_data():
     """Load raw classification scores."""
-    scores_path = Path('../data/processed/scores_pipeline.csv')
-    if scores_path.exists():
-        return pd.read_csv(scores_path)
-    else:
-        return None
+    paths = [
+        'data/processed/scores_pipeline.csv',
+        '../data/processed/scores_pipeline.csv',
+        './data/processed/scores_pipeline.csv'
+    ]
+
+    for path in paths:
+        p = Path(path)
+        if p.exists():
+            return pd.read_csv(p)
+
+    return None
 
 # Load data
 index_df = load_index_data()
