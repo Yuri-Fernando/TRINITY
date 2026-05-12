@@ -48,8 +48,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title
-st.title("📊 Regulatory Uncertainty LLM Index Dashboard")
-st.markdown("Real-time monitoring of regulatory uncertainty signals")
+st.title("📊 TRINITY Dashboard")
+st.markdown("**T**emporal **R**egulatory **I**ntelligence **N**etwork - Real-time uncertainty monitoring")
 
 # Load data
 @st.cache_data

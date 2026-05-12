@@ -1,10 +1,14 @@
-# Regulatory Uncertainty LLM Index
+# TRINITY – Temporal Regulatory Intelligence Network
 
-## O Que Este Projeto Faz?
+*Real-time regulatory uncertainty monitoring with AI*
 
-**Monitora e quantifica incerteza regulatória em tempo real usando IA.**
+## O Que É TRINITY?
+
+**TRINITY monitora e quantifica incerteza regulatória em tempo real usando IA.**
 
 Coleta documentos de reguladores (Federal Reserve, SEC), extrai sinais de ambiguidade e incerteza, classifica com LLMs e agrega em um índice temporal para risk management.
+
+**Nome:** TRINITY = **T**emporal **R**egulatory **I**ntelligence **N**etwork
 
 ---
 
