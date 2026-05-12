@@ -396,7 +396,7 @@ MIT
 
 ## Autor
 
-Yuri Dubberstein – yuri.dubbern@gmail.com
+Yuri Dubbern
 
 ---
 
